@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Device Redirect</title>
+
+  <script>
+    // Redirect to mobile site if device is a phone or tablet
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      window.location.href = "gallari.html"; // Replace with your mobile version
+    }
+    // Optional: redirect desktop users to full site
+     else {
+       window.location.href = "gallary.html";
+     }
+  </script>
+</head>
+<body>
+  <h1>Welcome to the site!</h1>
+</body>
+</html>
