@@ -1,0 +1,79 @@
+
+body {
+  background-image: url('./img/background.jpg');
+  background-size: cover;
+}
+
+
+.grid-gallery {
+  --size: 100px;
+  display: grid;
+  grid-template-columns: repeat(12, var(--size));
+  grid-auto-rows: var(--size);
+  gap: 5px;
+  place-items: start center;
+  margin-bottom: var(--size);
+}
+
+.grid-gallery a {
+  width: calc(var(--size) * 2);
+  height: calc(var(--size) * 2);
+  object-fit: contain;
+  grid-column: auto / span 2;
+  border-radius: 5px;
+  clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z"); 
+}
+
+.grid-gallery img {
+  width: calc(var(--size) * 2);
+  height: calc(var(--size) * 2);
+  object-fit: contain;
+  grid-column: auto / span 2;
+  border-radius: 5px;
+  clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z"); 
+}
+
+.grid-gallery img:nth-child(11n - 4) { 
+  grid-column: 2 / span 2 
+}
+
+.grid-gallery a:nth-child(11n - 4) { 
+  grid-column: 2 / span 2 
+}
+
+.grid-gallery:has(img:hover) img:not(:hover) {
+  filter: brightness(0.5) contrast(0.5);
+}
+
+.grid-gallery:has(a:hover) a:not(:hover) {
+  filter: brightness(0.5) contrast(0.5);
+}
+
+
+.grid-gallery img {
+  /* ... */
+  transition: clip-path 0.25s;
+}
+
+.grid-gallery img:hover {
+  clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
+  transition: clip-path 0.25s;
+  z-index: 1;
+}
+
+.grid-gallery a:hover {
+  clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
+  transition: clip-path 0.25s;
+  z-index: 1;
+}
+
+.grid-gallery a:focus {
+  outline: 1px dashed black;
+  outline-offset: -5px;
+}
+/* Do not dim the other gallery images when hovering. */
+.grid-gallery:has(img:hover) img:not(:hover),
+.grid-gallery:has(a:hover) a:not(:hover) {
+  filter: none;
+  opacity: 1;
+}
